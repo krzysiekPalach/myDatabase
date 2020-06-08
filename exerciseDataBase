@@ -1,0 +1,132 @@
+CREATE DATABASE exercise_db;
+
+USE exercise_db;
+
+CREATE TABLE employee(
+ id INT Primary Key,
+ firstName VARCHAR (15),
+ secondName VARCHAR (15),
+ lastName VARCHAR (32),
+ gender VARCHAR,
+ birthDate DATE,
+ salary INT,
+ departmentId INT,
+ hireDate DATE,
+ relieveDate DATE,
+ active INT
+);
+
+INSERT INTO employee (id, firstName, lastName, gender, birthDate, salary, departmentId, hireDate, active) VALUES (1, 'Mary', 'Smith', 'W', '1985-12-18', 2000, 1, '2011-05-06', 1);
+INSERT INTO employee (id, firstName, secondName, lastName, gender, birthDate, salary, departmentId, hireDate, active) VALUES (2, 'Paul', 'George', 'Johnson', 'M', '1990-01-13', 1500, 3, '2011-10-29', 1);
+INSERT INTO employee (id, firstName, lastName, gender, birthDate, salary, departmentId, hireDate, relieveDate, active) VALUES (3, 'Patricia', 'Wilson', 'W', '1995-05-28', 1000, 4, '2012-01-24', '2013-11-25', 0);
+INSERT INTO employee (id, firstName, secondName, lastName, gender, birthDate, salary, departmentId, hireDate, active) VALUES (4, 'Linda', 'Lisa', 'Brown', 'W', '1983-07-11', 2700, 2, '2012-06-15', 1);
+INSERT INTO employee (id, firstName, lastName, gender, birthDate, salary, departmentId, hireDate, active) VALUES (5, 'Johnatan', 'Davis', 'M', '1978-01-24', 1200, 1, '2013-01-15', 1);
+INSERT INTO employee (id, firstName, lastName, birthDate, salary, departmentId, hireDate, relieveDate, active) VALUES (6, 'John', 'Miller', '1993-10-20', 2000, 4, '2013-03-27', '2014-10-06', 0);
+INSERT INTO employee (id, firstName, secondName, lastName, gender, birthDate, salary, departmentId, hireDate, active) VALUES (7, 'Elizabeth', 'Dorothy', 'Taylor', 'W', '1992-09-09', 2110, 1, '2013-10-09', 1);
+INSERT INTO employee (id, firstName, lastName, gender, birthDate, salary, departmentId, hireDate, relieveDate, active) VALUES (8, 'James', 'Wilson', 'M', '1987-03-19', 1000, 3, '2013-10-09', '2014-03-01', 1);
+INSERT INTO employee (id, firstName, lastName, gender, birthDate, salary, departmentId, hireDate, relieveDate, active) VALUES (9, 'Robert', 'Anderson', 'M', '1989-12-13', 2900, 2, '2013-12-20', '2014-05-05', 0);
+INSERT INTO employee (id, firstName, secondName, lastName, gender, birthDate, salary, departmentId, hireDate, active) VALUES (10, 'John', 'Mark', 'Smith', 'W', '1990-05-24', 2500, 1, '2014-01-24', 1);
+
+CREATE TABLE product(
+id INT Primary Key,
+name VARCHAR (15),
+price INT,
+categoryId INT
+);
+
+INSERT INTO product VALUES (1, 'Laptop', 2000, 1);
+INSERT INTO product VALUES (2, 'Mouse', 50, 2);
+INSERT INTO product VALUES (3, 'Keyboard', 300, 2);
+INSERT INTO product VALUES (4, 'Flash drive', 100, 3);
+INSERT INTO product VALUES (5, 'Hard drive', 400, 3);
+
+CREATE TABLE orders (
+id INT Primary Key,
+orderNumber VARCHAR (15),
+orderDate DATE,
+orderTotal INT,
+employeeId INT);
+
+INSERT INTO orders VALUES (1, 'Z/13/2014', '2014-01-14', 55, 3);
+INSERT INTO orders VALUES (2, 'Z/25/2015', '2015-02-21', 668, 5);
+INSERT INTO orders VALUES (3, 'Z/30/2015', '2015-06-29', 2890, 1);
+INSERT INTO orders VALUES (5, 'Z/45/2015', '2015-07-24', 800, 3);
+INSERT INTO orders VALUES (6, 'Z/50/2015', '2015-08-02', 2700, 4);
+
+CREATE TABLE productCategory (
+id INT Primary Key,
+name VARCHAR (15)
+);
+
+INSERT INTO productCategory VALUES (1, 'Computer');
+INSERT INTO productCategory VALUES (2, 'Accessory');
+INSERT INTO productCategory VALUES (3, 'Drive');
+INSERT INTO productCategory VALUES (4, 'Printer');
+
+CREATE TABLE orderDetails (
+id INT Primary Key,
+orderId INT,
+productId INT,
+quantity INT,
+unitCost INT
+);
+
+INSERT INTO orderDetails VALUES (2, 1, 2, 1, 55);
+INSERT INTO orderDetails VALUES (3, 2, 2, 1, 55);
+INSERT INTO orderDetails VALUES (4, 2, 4, 2, 99);
+INSERT INTO orderDetails VALUES (5, 2, 5, 1, 415);
+INSERT INTO orderDetails VALUES (6, 3, 1, 2, 1900);
+INSERT INTO orderDetails VALUES (7, 3, 2, 2, 45);
+INSERT INTO orderDetails VALUES (8, 5, 2, 20, 40);
+
+CREATE TABLE archivedProduct (
+id INT Primary Key,
+name VARCHAR (15),
+price INT,
+categoryId INT
+);
+
+INSERT INTO archivedProduct VALUES (3, 'Keyboard', 300, 2);
+INSERT INTO archivedProduct VALUES (6, 'Monitor', 900, 2);
+
+CREATE TABLE department (
+id INT Primary Key,
+name VARCHAR (15),
+managerId INT,
+cityId INT
+);
+
+INSERT INTO department VALUES (1, 'IT', 5, 2);
+INSERT INTO department (id, name, managerId) VALUES (2, 'Accounting', 4);
+INSERT INTO department VALUES (3, 'HR', 8, 2);
+INSERT INTO department VALUES (4, 'Marketing', 3, 1);
+INSERT INTO department VALUES (5, 'Controlling', 11, 3);
+INSERT INTO department VALUES (6, 'DataWareHouse', 5, 4);
+
+CREATE TABLE city (
+id INT Primary Key,
+name VARCHAR (25)
+);
+
+INSERT INTO city VALUES (1, 'New York');
+INSERT INTO city VALUES (2, 'Warsaw');
+INSERT INTO city VALUES (3, 'London');
+INSERT INTO city VALUES (4, 'Paris');
+INSERT INTO city VALUES (5, 'Venice');
+
+CREATE TABLE formerEmployee (
+id INT Primary Key,
+firstName VARCAHR (15),
+secondName VARCHAR (15),
+lastName VARCHAR (32),
+gender VARCHAR, 
+birthDate DATE,
+salary INT, 
+departmentId INT,
+hireDate DATE,
+relieveDate DATE,
+active INT
+);
+
+INSERT INTO formerEmployee (id, firstName, lastName, gender, birthDate, salary, departmentId, hireDate, relieveDate) VALUES (6, 'John', 'Miller', 'W', '1993-10-20', 2000, 4, '2013-03-27', '2014-10-06');
+INSERT INTO formerEmployee (id, firstName, lastName, gender, birthDate, salary,departmentId, hireDate, relieveDate) VALUES (11, 'Ann', 'Pritchet', 'M', '1980-05-21', 2400, 6, '2014-01-05', '2015-02-01');
